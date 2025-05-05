@@ -25,6 +25,7 @@ import TransactionsComponent from './components/TransactionsComponent';
 import CardComponent from './components/CardComponent';
 import ProfileComponent from './components/ProfileComponent';
 import SettingsComponent from './components/SettingsComponent';
+import AuditLogsAndReportingComponent from './components/AuditLogsAndReportingComponent';
 
 // import Settings from './pages/Settings';
 // import Help from './pages/Help';
@@ -51,6 +52,7 @@ return (
           <Route path="/cards" element={<CardComponent />} />
           <Route path="/profile" element={<ProfileComponent />} />
           <Route path="/settings" element={<SettingsComponent />} />
+          <Route path="audit-logs" element={<AuditLogsAndReportingComponent />} />
         </Route>
 
       {/* Protected routes with dashboard layout */}
