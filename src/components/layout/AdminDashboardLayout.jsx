@@ -1,6 +1,6 @@
 // AdminDashboard.jsx
 import React, { useState, useEffect } from 'react';
-import { Home, Settings, User, CreditCard, FileText, LogOut, Menu, X,FileBarChart  } from 'lucide-react';
+import { Home, Settings, User, CreditCard, FileText, LogOut, Menu, X,FileBarChart,Users } from 'lucide-react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -9,6 +9,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     { title: 'Dashboard', icon: <Home size={20} />, path: '/dashboard' },
     { title: 'Transactions', icon: <FileText size={20} />, path: '/transactions' },
     { title: 'Cards', icon: <CreditCard size={20} />, path: '/cards' },
+    { title: 'Members', icon: <Users size={20} />, path: '/members' },
     { title: 'Audit Logs & Reports', icon: <FileBarChart size={20} />, path: '/audit-logs' },
     { title: 'Profile', icon: <User size={20} />, path: '/profile' },
     { title: 'Settings', icon: <Settings size={20} />, path: '/settings' },
