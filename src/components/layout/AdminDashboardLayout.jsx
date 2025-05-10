@@ -114,7 +114,7 @@ const TopBar = ({ toggleSidebar }) => {
             />
           </Link>
           <Link to="/profile" className="hidden md:block text-sm font-medium text-gray-700 hover:text-sky-600">
-            Admin User
+            Daniel Okoh
           </Link>
         </div>
       </div>
