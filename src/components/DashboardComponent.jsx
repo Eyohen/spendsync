@@ -22,39 +22,39 @@ const categoryData = [
 ];
 
 const recentTransactions = [
-  { 
-    id: 1, 
-    name: 'Jane Doe', 
-    department: 'Sales', 
-    amount: 25000, 
-    date: '03 May, 2025', 
+  {
+    id: 1,
+    name: 'Jane Doe',
+    department: 'Sales',
+    amount: 25000,
+    date: '03 May, 2025',
     category: 'Transport',
     status: 'Completed'
   },
-  { 
-    id: 2, 
-    name: 'John Smith', 
-    department: 'Operations', 
-    amount: 15000, 
-    date: '02 May, 2025', 
+  {
+    id: 2,
+    name: 'John Smith',
+    department: 'Operations',
+    amount: 15000,
+    date: '02 May, 2025',
     category: 'Office Supplies',
     status: 'Pending'
   },
-  { 
-    id: 3, 
-    name: 'Sarah Johnson', 
-    department: 'Marketing', 
-    amount: 35000, 
-    date: '01 May, 2025', 
+  {
+    id: 3,
+    name: 'Sarah Johnson',
+    department: 'Marketing',
+    amount: 35000,
+    date: '01 May, 2025',
     category: 'Client Entertainment',
     status: 'Completed'
   },
-  { 
-    id: 4, 
-    name: 'Michael Brown', 
-    department: 'IT', 
-    amount: 12500, 
-    date: '30 Apr, 2025', 
+  {
+    id: 4,
+    name: 'Michael Brown',
+    department: 'IT',
+    amount: 12500,
+    date: '30 Apr, 2025',
     category: 'Equipment',
     status: 'Declined'
   },
@@ -72,12 +72,11 @@ const StatCard = ({ title, value, icon, change, changeType }) => {
           <p className="text-sm font-medium text-gray-500">{title}</p>
           <h3 className="text-2xl font-bold mt-1">{value}</h3>
         </div>
-        <div className={`p-3 rounded-full ${
-          title === 'Wallet Balance' ? 'bg-green-100 text-green-600' : 
-          title === 'Active Cards' ? 'bg-sky-100 text-sky-600' :
-          title === 'Total Employees' ? 'bg-purple-100 text-purple-600' :
-          'bg-amber-100 text-amber-600'
-        }`}>
+        <div className={`p-3 rounded-full ${title === 'Wallet Balance' ? 'bg-green-100 text-green-600' :
+            title === 'Active Cards' ? 'bg-sky-100 text-sky-600' :
+              title === 'Total Employees' ? 'bg-purple-100 text-purple-600' :
+                'bg-amber-100 text-amber-600'
+          }`}>
           {icon}
         </div>
       </div>
@@ -93,7 +92,7 @@ const StatCard = ({ title, value, icon, change, changeType }) => {
 
 const DashboardComponent = () => {
   const [timeRange, setTimeRange] = useState('monthly');
-  
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -103,7 +102,7 @@ const DashboardComponent = () => {
             <Filter size={16} className="mr-2" />
             Filter
           </button>
-          <select 
+          <select
             className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700"
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
@@ -115,43 +114,43 @@ const DashboardComponent = () => {
           </select>
         </div>
       </div>
-      
+
       {/* Stats Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard 
-          title="Wallet Balance" 
-          value="₦4,500,000" 
-          icon={<Wallet size={24} />} 
-          change="12%" 
-          changeType="positive" 
+        <StatCard
+          title="Wallet Balance"
+          value="₦4,500,000"
+          icon={<Wallet size={24} />}
+          change="12%"
+          changeType="positive"
         />
-        <StatCard 
-          title="Active Cards" 
-          value="24" 
-          icon={<CreditCard size={24} />} 
-          change="8%" 
-          changeType="positive" 
+        <StatCard
+          title="Active Cards"
+          value="24"
+          icon={<CreditCard size={24} />}
+          change="8%"
+          changeType="positive"
         />
-        <StatCard 
-          title="Total Employees" 
-          value="45" 
-          icon={<Users size={24} />} 
-          change="5%" 
-          changeType="positive" 
+        <StatCard
+          title="Total Employees"
+          value="45"
+          icon={<Users size={24} />}
+          change="5%"
+          changeType="positive"
         />
-        <StatCard 
-          title="Monthly Spend" 
-          value="₦3,250,000" 
-          icon={<TrendingUp size={24} />} 
-          change="3%" 
-          changeType="negative" 
+        <StatCard
+          title="Monthly Spend"
+          value="₦3,250,000"
+          icon={<TrendingUp size={24} />}
+          change="3%"
+          changeType="negative"
         />
       </div>
-      
+
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-          <div className="flex items-center justify-between mb-6">
+      <div className="grid max-w-[1000px]">
+        {/*  <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+         <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-800">Transaction Overview</h2>
             <button className="text-gray-400 hover:text-gray-600">
               <MoreHorizontal size={20} />
@@ -162,25 +161,25 @@ const DashboardComponent = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="name" stroke="#9ca3af" />
               <YAxis stroke="#9ca3af" />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => formatCurrency(value)}
-                contentStyle={{ 
-                  backgroundColor: 'white', 
+                contentStyle={{
+                  backgroundColor: 'white',
                   border: '1px solid #e5e7eb',
                   borderRadius: '0.5rem'
                 }}
               />
-              <Line 
-                type="monotone" 
-                dataKey="amount" 
-                stroke="#0ea5e9" 
+              <Line
+                type="monotone"
+                dataKey="amount"
+                stroke="#0ea5e9"
                 strokeWidth={2}
                 activeDot={{ r: 6, fill: '#0ea5e9', stroke: 'white', strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
-        </div>
-        
+        </div> */}
+
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-800">Spending by Category</h2>
@@ -192,32 +191,32 @@ const DashboardComponent = () => {
             <BarChart data={categoryData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
               <XAxis type="number" stroke="#9ca3af" />
-              <YAxis 
-                dataKey="name" 
-                type="category" 
-                stroke="#9ca3af" 
+              <YAxis
+                dataKey="name"
+                type="category"
+                stroke="#9ca3af"
                 width={100}
                 tickLine={false}
                 axisLine={false}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => `${value}%`}
-                contentStyle={{ 
-                  backgroundColor: 'white', 
+                contentStyle={{
+                  backgroundColor: 'white',
                   border: '1px solid #e5e7eb',
                   borderRadius: '0.5rem'
                 }}
               />
-              <Bar 
-                dataKey="value" 
+              <Bar
+                dataKey="value"
                 fill="#0ea5e9"
-                radius={[0, 4, 4, 0]} 
+                radius={[0, 4, 4, 0]}
               />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
-      
+
       {/* Recent Transactions */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-100">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
@@ -255,11 +254,10 @@ const DashboardComponent = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{transaction.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{transaction.date}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                      transaction.status === 'Completed' ? 'bg-green-100 text-green-800' : 
-                      transaction.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'
-                    }`}>
+                    <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${transaction.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                        transaction.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
+                      }`}>
                       {transaction.status}
                     </span>
                   </td>

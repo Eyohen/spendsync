@@ -576,6 +576,7 @@ import {
   Receipt
 } from 'lucide-react';
 import logo from '../assets/logo.png'; 
+import profile from '../assets/profile.jpg'; 
 import ReceiptModal from './ReceiptModal';
 import ReimbursementTab from './ReimbursementTab';
 
@@ -724,7 +725,8 @@ const MemberDashboard = () => {
               <p className="text-xs text-gray-500">{MOCK_USER.department} - {MOCK_USER.role}</p>
             </div>
             <img 
-              src={MOCK_USER.profileImage} 
+              src={profile} 
+              onClick={() => setActiveTab('profile')}
               alt="Profile" 
               className="h-10 w-10 rounded-full"
             />
@@ -782,7 +784,7 @@ const MemberDashboard = () => {
                 Reimbursements
               </span>
             </button>
-            <button
+            {/* <button
               onClick={() => setActiveTab('profile')}
               className={`pb-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'profile'
@@ -794,7 +796,7 @@ const MemberDashboard = () => {
                 <User size={16} className="mr-2" />
                 My Profile
               </span>
-            </button>
+            </button> */}
           </nav>
         </div>
         
@@ -1065,7 +1067,7 @@ const MemberDashboard = () => {
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
               <div className="px-4 py-5 sm:px-6 flex items-center">
                 <img 
-                  src={MOCK_USER.profileImage} 
+                  src={profile} 
                   alt="Profile" 
                   className="h-16 w-16 rounded-full mr-4"
                 />

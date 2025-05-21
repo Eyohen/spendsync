@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
 import { ArrowRight, Eye, EyeOff, Mail, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { URL } from '../url';
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,26 +11,34 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
+    const navigate = useNavigate()
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Handle login logic here
     console.log('Login submitted with:', { email, password, rememberMe });
+    const res = await axios.post(`${URL}/api/merchants/login`, {email, password, })
+    console.log("")
+    if(res.status === 200){
+      navigate('/')
+    }
+
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-teal-50 flex flex-col justify-center">
       {/* Login decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-teal-500 -skew-x-6 transform origin-top-right opacity-5 hidden lg:block"></div>
-      <div className="absolute top-10 right-10 w-72 h-72 bg-teal-600 rounded-full opacity-10 blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-green-600 rounded-full opacity-10 blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full  transform origin-top-right opacity-5 hidden lg:block"></div>
+      <div className="absolute top-10 right-10 w-72 h-72 rounded-full opacity-10 blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full opacity-10 blur-3xl"></div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <div className="text-center">
           <span className="text-3xl font-bold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-green-700">SpendSync</span>
+            <span className="bg-clip-text text-transparent ">SpendSync</span>
           </span>
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900">Sign in to your account</h2>
           <p className="mt-2 text-sm text-gray-600">
@@ -134,46 +144,7 @@ export default function Login() {
               </div>
             </div>
 
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300"></div>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">Or continue with</span>
-                </div>
-              </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <div>
-                  <a
-                    href="#"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition duration-300"
-                  >
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V19c0 .27.16.59.67.5C17.14 18.16 20 14.42 20 10A10 10 0 0010 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    href="#"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition duration-300"
-                  >
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                      <path
-                        d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+        
           </div>
         </div>
       </div>

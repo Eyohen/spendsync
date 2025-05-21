@@ -1,4 +1,4 @@
-// src/contexts/AuthContext.js
+// src/context/AuthContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 // Create the AuthContext with default values
@@ -19,13 +19,21 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // You can replace this with your authentication logic
     // For example, checking local storage for a logged-in user
+
+    // Check if there is stored user data before parsing it
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      
+
+      try{
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true)
-      setLoading(false)
+      } catch(error){
+          // Handle invalid JSON in localStorage
+      console.error("Error parsing user data:", error);
+      localStorage.removeItem('user'); // Remove invalid data
+      }
     }
+      setLoading(false)
   }, []);
 
   const login = (userData) => {

@@ -216,7 +216,7 @@ const TransactionsComponent = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-800">Transactions</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Transactions Overview</h1>
         <div className="flex space-x-2">
           <button className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 flex items-center">
             <Download size={16} className="mr-2" />

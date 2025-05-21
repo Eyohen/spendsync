@@ -24,10 +24,8 @@ import MembersComponent from './components/MembersComponent';
 import MemberLogin from './pages/MemberLogin';
 import MemberDashboard from './components/MemberDashboard';
 import PasswordReset from './pages/PasswordReset';
+import RegistrationSuccess from './pages/RegistrationSuccess';
 
-// import Settings from './pages/Settings';
-// import Help from './pages/Help';
-// import NotFound from './pages/NotFound';
 
 
 const App = () => {
@@ -44,6 +42,8 @@ return (
   <Route path="/signup" element={<Register />} />
   <Route path="/verify-email" element={<VerifyEmail />} />
   <Route path="/documentation" element={<Documentation />} />
+
+  <Route path="/registration-success" element={<RegistrationSuccess />} />
  
 
   <Route path="/member/login" element={<MemberLogin />} />
